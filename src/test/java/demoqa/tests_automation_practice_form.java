@@ -32,7 +32,8 @@ public class tests_automation_practice_form {
         String currentAddress = "Krasnodar, ul. mire, 43-3";
 
         open("/automation-practice-form");
-        zoom(0.5);
+        $("#submit").scrollIntoView(false);
+        zoom(0.7);
         $("#subjectsInput").pressEnter();
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
@@ -48,8 +49,8 @@ public class tests_automation_practice_form {
         $(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("jpeg/11.jpeg");
         $("#currentAddress").setValue(currentAddress);
-        $("#css-1hwfws3").click();
-        $(".css-1uccc91-singleValue").selectOption("NCR");
+        //$(".css-1wy0on6").click();
+        //$(".css-1uccc91-singleValue").selectOption("NCR");
     }
 
     //$("[id=submit]").click();
