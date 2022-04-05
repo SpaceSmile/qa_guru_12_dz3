@@ -32,7 +32,8 @@ public class tests_automation_practice_form {
         String currentAddress = "Krasnodar, ul. mire, 43-3";
 
         open("/automation-practice-form");
-        $("#submit").scrollIntoView(false);
+        Selenide.executeJavaScript("document.querySelector(\"footer\").hidden = 'true';" +
+                "document.querySelector(\"#fixedban\").hidden = 'true'");
         zoom(0.7);
         $("#subjectsInput").pressEnter();
         $("#firstName").setValue(firstName);
@@ -49,20 +50,15 @@ public class tests_automation_practice_form {
         $(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("jpeg/11.jpeg");
         $("#currentAddress").setValue(currentAddress);
-        //$(".css-1wy0on6").click();
-        //$(".css-1uccc91-singleValue").selectOption("NCR");
+        $(".css-1wa3eu0-placeholder").click();
+        $(byText("NCR")).click();
+        $(".css-1wa3eu0-placeholder").click();
+        $(byText("Noida")).click();
+        $("#submit").click();
+        $(".modal-body").shouldHave(text("Ivan Ivanov"), text(email), text("Male"), text(userNumber), text(userNumber), text("22 May,2002"), text(subjects), text("Sports"), text("11.jpeg"), text(currentAddress), text("NCR Noida"));
+        $("#closeLargeModal").click();
     }
 
-    //$("[id=submit]").click();
-//        $("[id=submit]").shouldBe(visible).click();
-
-        // Asserts
-        // $("[id=output]").shouldHave(text(name), text("alex@egorov.com"),
-                //text("Some street 1"), text("Another street 2"));
-
-//        $("[id=output] [id=name]").shouldHave(text(name));
-//        $("[id=output]").$("[id=name]").shouldHave(text(name));
-//        $("[id=name]").shouldHave(text(name));
 //
 //        $("[id=permanentAddress]").shouldHave(text("Permananet Address :Another street 2")); // wrong
 //        $("[id=permanentAddress]", 1).shouldHave(text("Permananet Address :Another street 2"));
