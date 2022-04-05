@@ -1,17 +1,13 @@
 package demoqa;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.openqa.selenium.Keys.*;
 
 public class tests_automation_practice_form {
 
@@ -30,7 +26,6 @@ public class tests_automation_practice_form {
         String userNumber = "9991234567";
         String subjects = "Arts";
         String currentAddress = "Krasnodar, ul. mire, 43-3";
-
         open("/automation-practice-form");
         Selenide.executeJavaScript("document.querySelector(\"footer\").hidden = 'true';" +
                 "document.querySelector(\"#fixedban\").hidden = 'true'");
@@ -69,13 +64,4 @@ public class tests_automation_practice_form {
                 text("NCR Noida"));
         $("#closeLargeModal").click();
     }
-
-//
-//        $("[id=permanentAddress]").shouldHave(text("Permananet Address :Another street 2")); // wrong
-//        $("[id=permanentAddress]", 1).shouldHave(text("Permananet Address :Another street 2"));
-//        $("p[id=permanentAddress]").shouldHave(text("Permananet Address :Another street 2"));
-//
-//        String expectedPermanentAddress = "Another street 2";
-//        String actualPermanentAddress = $("p[id=permanentAddress]").text();
-//        assertEquals(expectedPermanentAddress, actualPermanentAddress);
 }
