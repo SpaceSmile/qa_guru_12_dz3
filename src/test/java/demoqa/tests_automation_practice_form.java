@@ -55,7 +55,18 @@ public class tests_automation_practice_form {
         $(".css-1wa3eu0-placeholder").click();
         $(byText("Noida")).click();
         $("#submit").click();
-        $(".modal-body").shouldHave(text("Ivan Ivanov"), text(email), text("Male"), text(userNumber), text(userNumber), text("22 May,2002"), text(subjects), text("Sports"), text("11.jpeg"), text(currentAddress), text("NCR Noida"));
+        $(".modal-body").shouldHave(
+                text("Ivan Ivanov"),
+                text(email),
+                text("Male"),
+                text(userNumber),
+                text(userNumber),
+                text("22 May,2002"),
+                text(subjects),
+                text("Sports"),
+                text("11.jpeg"),
+                text(currentAddress),
+                text("NCR Noida"));
         $("#closeLargeModal").click();
     }
 
