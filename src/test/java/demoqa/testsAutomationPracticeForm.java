@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class tests_automation_practice_form {
+public class testsAutomationPracticeForm {
 
     @BeforeAll
     static void setUp() {
@@ -25,29 +25,27 @@ public class tests_automation_practice_form {
         String email = "ivan.ivanov@gmail.com";
         String userNumber = "9991234567";
         String subjects = "Arts";
-        String currentAddress = "Krasnodar, ul. mire, 43-3";
+        String currentAddress = "Krasnodar, ul. mira, 43-3";
         open("/automation-practice-form");
         Selenide.executeJavaScript("document.querySelector(\"footer\").hidden = 'true';" +
                 "document.querySelector(\"#fixedban\").hidden = 'true'");
-        zoom(0.7);
         $("#subjectsInput").pressEnter();
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
-        $(byText("Male")).click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__year-select").selectOption("2002");
         $(byText("22")).click();
-        $("#subjectsInput").shouldBe(enabled).setValue(subjects);
-        $("#subjectsInput").pressEnter();
-        $(byText("Sports")).click();
+        $("#subjectsInput").setValue(subjects).pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("jpeg/11.jpeg");
         $("#currentAddress").setValue(currentAddress);
-        $(".css-1wa3eu0-placeholder").click();
+        $("#state").click();
         $(byText("NCR")).click();
-        $(".css-1wa3eu0-placeholder").click();
+        $("#city").click();
         $(byText("Noida")).click();
         $("#submit").click();
         $(".modal-body").shouldHave(
@@ -62,6 +60,5 @@ public class tests_automation_practice_form {
                 text("11.jpeg"),
                 text(currentAddress),
                 text("NCR Noida"));
-        $("#closeLargeModal").click();
     }
 }
