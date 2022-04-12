@@ -5,12 +5,6 @@ import com.demoqa.pages.RegistrationFormPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static java.lang.String.format;
 
 public class RegistrationFormWithPageObjectsTests {
@@ -30,9 +24,11 @@ public class RegistrationFormWithPageObjectsTests {
         subjects = "Arts",
         hobbies = "Sports",
         picture = "11.jpeg",
+        wayPicture = "jpeg/11.jpeg",
         currentAddress = faker.address().fullAddress(),
         state = "NCR",
-        city = "Noida";
+        city = "Noida",
+        addressFull = format("%s %s", state, city);
 
     @BeforeAll
     static void setUp() {
@@ -51,13 +47,12 @@ public class RegistrationFormWithPageObjectsTests {
                 .setUserNumber(userNumber)
                 .setBirthDate(day, month, year)
                 .setSubjects(subjects)
-                .setPicture(picture)
+                .setHobbies(hobbies)
+                .setPicture(wayPicture)
                 .setCurrentAddress(currentAddress)
                 .setState(state)
                 .setCity(city)
-                .setSubmit();
-
-        RegistrationFormPage.checkTableText("Thanks for submitting the form")
+                .setSubmit()
                 .checkResult("Student Name", fullName)
                 .checkResult("Student Email", email)
                 .checkResult("Gender", gender)
@@ -67,6 +62,6 @@ public class RegistrationFormWithPageObjectsTests {
                 .checkResult("Hobbies", hobbies)
                 .checkResult("Picture", picture)
                 .checkResult("Address", currentAddress)
-                .checkResult("State and City", state + " " + city);;
+                .checkResult("State and City", addressFull);
     }
 }

@@ -2,8 +2,6 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
-import com.demoqa.pages.components.CalendarComponent;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -24,14 +22,9 @@ public class RegistrationFormPage {
             uploadPicture = $("#uploadPicture"),
             CurrentAddress = $("#currentAddress"),
             stateInput = $("#state"),
-            stateCityWrapperInput = $(".stateCity-wrapper"),
             cityInput = $("#city"),
             submitInput = $("#submit"),
             tableResultInput = $(".table-responsive");
-
-    public SelenideElement tableCheck() {
-        return $("#example-modal-sizes-title-lg");
-    }
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
@@ -81,6 +74,11 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
+
+        return this;
+    }
+
+    public RegistrationFormPage setHobbies(String value) {
         hobbiesWrapperInput.$(byText(value)).click();
 
         return this;
@@ -98,16 +96,15 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setState(String value) {
-        stateInput.click();
-        stateCityWrapperInput.$(byText(value)).click();
-
+    public RegistrationFormPage setState(String state) {
+        stateInput.scrollIntoView(true).click();
+        $(byText(state)).click();
         return this;
     }
 
-    public RegistrationFormPage setCity(String value) {
+    public RegistrationFormPage setCity(String city) {
         cityInput.click();
-        stateCityWrapperInput.$(byText(value)).click();
+        $(byText(city)).click();
 
         return this;
     }
@@ -117,16 +114,10 @@ public class RegistrationFormPage {
 
         return this;
     }
-
-    public static RegistrationFormPage checkTableText(String text) {
-        tableCheck().shouldHave(text(text));
-
-        return this;
-    }
-
-    public RegistrationFormPage checkResult(String labelName, String value) {
-        tableResultInput.$(byText(labelName))
+    public RegistrationFormPage checkResult(String resName, String value) {
+        tableResultInput.$(byText(resName))
                 .parent().shouldHave(text(value));
+
         return this;
     }
 }
