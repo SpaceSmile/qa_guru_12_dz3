@@ -1,13 +1,19 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.pages.RegistrationFormPage;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
+import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static java.lang.String.format;
 
-public class RegistrationFormWithPageObjectsTests {
+@Owner("sedlachek")
+@Severity(SeverityLevel.BLOCKER)
+@Feature("Домашняя работа с jenkins")
+@Story("Проверка регистрационной формы на сайте demoqa.com")
+public class RegistrationFormWithPageObjectsTests extends TestBase {
     Faker faker = new Faker();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
@@ -30,13 +36,11 @@ public class RegistrationFormWithPageObjectsTests {
         city = "Noida",
         addressFull = format("%s %s", state, city);
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-    }
-
     @Test
+    @DisplayName("Заполнение регистрационной формы")
     void automationPracticeForm() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        RegistrationFormPage steps = new RegistrationFormPage();
         registrationFormPage
                 .openPage()
                 .setFirstName(firstName)
