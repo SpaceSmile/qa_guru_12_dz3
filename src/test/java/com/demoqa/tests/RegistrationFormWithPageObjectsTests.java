@@ -40,7 +40,6 @@ public class RegistrationFormWithPageObjectsTests extends TestBase {
     @DisplayName("Заполнение регистрационной формы")
     void automationPracticeForm() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        RegistrationFormPage steps = new RegistrationFormPage();
         registrationFormPage
                 .openPage()
                 .setFirstName(firstName)
