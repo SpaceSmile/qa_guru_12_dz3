@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static java.lang.String.format;
 
-@Owner("sedlachek")
+@Owner("Седлачек В.С.")
 @Severity(SeverityLevel.BLOCKER)
 @Feature("Домашняя работа с jenkins")
 @Story("Проверка регистрационной формы на сайте demoqa.com")

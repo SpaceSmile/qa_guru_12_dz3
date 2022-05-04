@@ -1,14 +1,20 @@
 package com.demoqa.old;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Owner("Седлачек В.С.")
+@Severity(SeverityLevel.BLOCKER)
+@Feature("Домашняя работа с jenkins")
+@Story("Проверка регистрационной формы на сайте demoqa.com")
 public class testsAutomationPracticeFormOld {
 
     @BeforeAll
@@ -18,6 +24,7 @@ public class testsAutomationPracticeFormOld {
     }
 
     @Test
+    @DisplayName("Заполнение регистрационной формы старый вариант")
     @Disabled
     void automationPracticeForm() {
         String firstName = "Ivan";
