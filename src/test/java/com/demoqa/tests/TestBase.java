@@ -21,13 +21,13 @@ public class TestBase {
         String login = config.login();
         String password = config.password();
 
-        String url = System.getProperty("url", "selenoid.autotests.cloud/wd/hub");
+        String selenoidUrl = System.getProperty("url", "selenoid.autotests.cloud/wd/hub");
         String browserSize = System.getProperty("browserSize","1980x1024");
         String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
 
         Configuration.baseUrl = baseUrl;
         Configuration.browserSize = browserSize;
-        Configuration.remote = "https://"+ login + ":" + password +"@" + url;
+        Configuration.remote = "https://"+ login + ":" + password +"@" + selenoidUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
