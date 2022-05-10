@@ -21,9 +21,9 @@ public class TestBase {
         String login = config.login();
         String password = config.password();
 
-        String url = System.getProperty("selenoid", "selenoid.autotests.cloud/wd/hub");
-        String browserSize = System.getProperty("propertyBrowserSize","1980x1024");
-        String baseUrl = System.getProperty("startUrl", "https://demoqa.com");
+        String url = System.getProperty("url", "selenoid.autotests.cloud/wd/hub");
+        String browserSize = System.getProperty("browserSize","1980x1024");
+        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
 
         Configuration.baseUrl = baseUrl;
         Configuration.browserSize = browserSize;
